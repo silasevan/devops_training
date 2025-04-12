@@ -1,45 +1,58 @@
 #!/bin/bash
 
-# creating a bash script that generate multiplication table base on user input number
-# the script will ask the user to enter a number and then generate the multiplication table for that number
-# ask if they want partial or full table
-# if partial, ask them to enter the number of rows they want to see
-# if full, generate the full table
-# if they enter anything else, exit the script
-# if they enter a number, generate the full table
+# =====================================================
+# Script Name: multiplication_table.sh
+# Purpose: Generate a multiplication table (partial or full)
+# Author: Ivang Silas Onda
+# Description:
+#   - User selects between partial or full table
+#   - Script validates input (positive integers only)
+#   - Demonstrates Bash scripting: if-else, for loop, input handling
+# =====================================================
 
-echo "Welcome to the multiplication table generator!"
-echo "Would you like to see a partial or full table?"
-echo "1. Partial"
-echo "2. Full"
-read choice
+# Function to validate if input is a positive integer
+validate_positive_integer() {
+    if ! [[ "$1" =~ ^[1-9][0-9]*$ ]]; then
+        echo "❌ Error: '$1' is not a valid positive number."
+        exit 1
+    fi
+}
 
-if [ $choice == 1 ]
-then
-    echo "Enter the number of rows you want to see: "
-    read rows
-    echo "Enter a number: "
-    read number
-    for i in $(seq 1 $rows)
-    do
-        echo "$number x $i = $(($number * $i))"
+# Welcome message
+echo "📌 Welcome to the Multiplication Table Generator!"
+
+# Prompt the user to choose table type
+echo "Would you like to see:"
+echo "1. Partial table"
+echo "2. Full table (1 to 10)"
+read -p "Enter your choice (1 or 2): " choice
+
+# Handle partial or full table
+if [ "$choice" == "1" ]; then
+    read -p "Enter the number of rows to display: " rows
+    validate_positive_integer "$rows"
+
+    read -p "Enter the base number for the table: " number
+    validate_positive_integer "$number"
+
+    echo "🔢 Generating partial multiplication table for $number (up to $rows rows)..."
+    for i in $(seq 1 "$rows"); do
+        echo "$number x $i = $((number * i))"
     done
-elif [ $choice == 2 ]
-then
-    echo "Enter a number: "
-    read number
-    for i in {1..10}
-    do
-        echo "$number x $i = $(($number * $i))"
+
+elif [ "$choice" == "2" ]; then
+    read -p "Enter the base number for the table: " number
+    validate_positive_integer "$number"
+
+    echo "🔢 Generating full multiplication table for $number (1 to 10)..."
+    for i in {1..10}; do
+        echo "$number x $i = $((number * i))"
     done
+
 else
-    echo "Invalid choice. Exiting script."
+    echo "⚠️ Invalid choice. Please run the script again and choose 1 or 2."
     exit 1
 fi
-echo "Enter a number: "
-read number
 
-for i in {1..10}
-do
-    echo "$number x $i = $(($number * $i))"
-done
+# End of script
+echo "✅ Done! Thank you for using the Multiplication Table Generator."
