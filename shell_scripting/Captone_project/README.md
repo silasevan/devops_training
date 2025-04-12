@@ -1,114 +1,76 @@
-🧮 Multiplication Table Generator – Bash Script
-📌 Overview
-This Bash script allows users to generate a multiplication table for any number they choose. It gives users the flexibility to generate either a partial or full multiplication table.
+📘 Multiplication Table Generator - Bash Script
+🎯 Purpose
+This Bash script generates a multiplication table based on user input. It showcases fundamental Bash scripting concepts like:
 
-It demonstrates interactive scripting, conditional logic (if-else), looping with for and seq, and basic user input handling—core concepts in shell scripting.
+if-else conditional logic
+
+for loops
+
+Input validation
+
+Script interactivity and automation
+
+The user can choose to generate a partial or full multiplication table by providing input through the terminal.
 
 🛠️ Features
-Accepts user input for a number.
+✅ Interactive menu: choose between partial or full table
 
-Prompts for partial or full multiplication table.
+✅ Input validation to ensure positive integer entries
 
-Uses if-else conditionals to branch based on user choice.
+✅ Efficient looping and branching logic
 
-Uses for loop to iterate and print results.
+✅ Clean prompts using read -p
 
-Basic error handling for invalid choices.
+✅ Error handling and graceful exit on invalid inputs
 
-Demonstrates real-world command-line interactivity.
+✅ Follows best practices for Bash scripting
 
-📂 Script Contents
-#!/bin/bash
 
-echo "Welcome to the multiplication table generator!"
-echo "Would you like to see a partial or full table?"
-echo "1. Partial"
-echo "2. Full"
-read choice
-
-if [ $choice == 1 ]
-then
-    echo "Enter the number of rows you want to see: "
-    read rows
-    echo "Enter a number: "
-    read number
-    for i in $(seq 1 $rows)
-    do
-        echo "$number x $i = $(($number * $i))"
-    done
-elif [ $choice == 2 ]
-then
-    echo "Enter a number: "
-    read number
-    for i in {1..10}
-    do
-        echo "$number x $i = $(($number * $i))"
-    done
-else
-    echo "Invalid choice. Exiting script."
-    exit 1
-fi
-
-echo "Enter a number: "
-read number
-
-for i in {1..10}
-do
-    echo "$number x $i = $(($number * $i))"
-done
-🔄 How It Works
-The script welcomes the user and prompts them to choose between:
-
-1 for Partial Table
-
-2 for Full Table
-
-If Partial, user is asked to enter:
-
-Number of rows (e.g., 5)
-
-Base number (e.g., 3)
-
-Output: multiplication table up to 5 rows (3 x 1 to 3 x 5)
-
-If Full, user is asked for the base number:
-
-Output: multiplication table up to 10 rows
-
-Any other input exits the script with a message.
-
-A final full multiplication table prompt runs at the end (this might be redundant).
-
-✅ Example Usage
-bash
-Copy
-Edit
-$ ./multiplication_table.sh
-Welcome to the multiplication table generator!
-Would you like to see a partial or full table?
-1. Partial
-2. Full
-1
-Enter the number of rows you want to see:
-4
-Enter a number:
-6
-6 x 1 = 6
-6 x 2 = 12
-6 x 3 = 18
-6 x 4 = 24
-
-Consider using read -p "Prompt message" variable for more compact prompts.
-
-🧪 Skills Demonstrated
-Concept	Demonstrated
-if-else conditions	✅
-for loops with seq and range	✅
-read command for user input	✅
-$(( )) for arithmetic	✅
-Error handling (exit 1)	✅
-🚀 Run the Script
+🚀 How to Run
 Make the script executable:
 chmod +x multiplication_table.sh
-Then run:
+Run the script:
+./multiplication_table.sh
+🧪 Example Usage
+📌 Welcome to the Multiplication Table Generator!
+Would you like to see:
+1. Partial table
+2. Full table (1 to 10)
+Enter your choice (1 or 2): 1
+Enter the number of rows to display: 5
+Enter the base number for the table: 3
+🔢 Generating partial multiplication table for 3 (up to 5 rows)...
+3 x 1 = 3
+3 x 2 = 6
+3 x 3 = 9
+3 x 4 = 12
+3 x 5 = 15
+✅ Done! Thank you for using the Multiplication Table Generator.
+🧠 Concepts Demonstrated
+Concept	Explanation
+if-else	Controls user path (partial vs full)
+for loop	Iterates through numbers in the table
+read	Accepts user input
+exit	Exits script on error
+Regular Expressions	Validates positive integer input
+Exit status $?	Used in input validation to exit on failure
+❗ Error Handling Examples
+Handles invalid menu options
+
+Rejects non-integer or negative input (e.g., letters, decimals, 0, -1)
+
+Gracefully exits on error with user-friendly messages
+
+📁 File Structure
+multiplication_table.sh
+README.md
+📈 Future Improvements
+Add logging to file (e.g., table.log)
+
+Allow custom range (e.g., 5 to 20)
+
+Add GUI version using zenity (Linux)
+
+👨‍💻 Author
+Ivang Silas Onda
 
