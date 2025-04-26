@@ -1,0 +1,4 @@
+💡 Mini Script Project Summary
+
+The mini script project is a Bash automation tool designed to set up cloud infrastructure across different environments (local, testing, and production) using AWS services. It begins by validating command-line arguments, ensuring the AWS CLI is installed, and confirming that an AWS profile is set. Based on the provided environment (local, testing, production), it proceeds to create two EC2 instances using predefined parameters such as instance type and AMI ID. Additionally, it automates the creation of S3 buckets for various departments (Marketing, Sales, HR, Operations, and Media) under a unified company naming convention. The script employs functions for modularity, arrays for departmental organization, error handling to ensure safe execution, environment variables for flexibility, and command-line arguments to adapt to different deployment needs.
+
