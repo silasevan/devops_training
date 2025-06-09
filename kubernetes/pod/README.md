@@ -20,6 +20,16 @@ Before you begin, ensure you have the following installed:
 
 ---
 
+<img src="./1.png">
+<img src="./screenshots/3.png">
+<img src="./screenshots/4.png">
+<img src="./5.png">
+<img src="./screenshots/6.png">
+<img src="./screenshots/7.png">
+<img src="./8.png">
+<img src="./screenshots/9.png">
+<img src="./screenshots/10.png">
+
 ## 📂 Creating a Pod
 
 You can create a Pod using a YAML configuration file or directly from the command line.
@@ -39,10 +49,9 @@ spec:
     image: nginx
     ports:
     - containerPort: 80
+    ```
+    ````
 
 
 
 
-### Screenshots
-<img src="./1.png">
-<img src="./screenshots/3.png">
