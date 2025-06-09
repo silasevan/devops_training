@@ -162,6 +162,76 @@ kubectl delete pod my-nginx
 | `5_delete_pod.png`   | Deleting the Pod                   |
 
 ---
+📡 Kubernetes Networking with Multi-Container Pods
+
+Kubernetes Pods can host multiple containers that need to communicate with each other closely. All containers within the same Pod share:
+
+Network namespace: Same IP address and port space.
+
+Volumes: Shared persistent storage if defined.
+
+This makes inter-container communication straightforward using localhost.
+
+🧪 Example: Web Server and Logger Sidecar
+
+This example demonstrates a Pod with:
+
+A main NGINX web server container.
+
+A sidecar container running busybox to log network connections.
+
+🔧 multi-container-pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-sidecar
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 80
+    - name: logger
+      image: busybox
+      command: ["sh", "-c", "while true; do netstat -tulnp; sleep 5; done"]
+
+🚀 Deploy the Multi-Container Pod
+
+kubectl apply -f multi-container-pod.yaml
+
+📸 Screenshot: Multi-container Pod deployed
+
+🔍 Inspect Pod and Logs
+
+Check both containers are running:
+
+kubectl describe pod nginx-sidecar
+
+To check logs from the logger container:
+
+kubectl logs nginx-sidecar -c logger
+
+📸 Screenshot: Logger container showing netstat output
+
+🔄 Communication Between Containers
+
+Since both containers share the loopback interface, the logger container can observe traffic from nginx on localhost:80.
+
+🧠 Insight
+
+This architecture is useful for sidecar patterns like logging, monitoring, or data transformation.
+
+Ensures low-latency, secure communication without needing Kubernetes Services or networking policies.
+
+🔗 References
+
+Kubernetes Pods Overview
+
+kubectl Cheat Sheet
+
+Kubernetes Official Docs
+
 
 ## 🔗 References
 
