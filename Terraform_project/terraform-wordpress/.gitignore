@@ -1,0 +1,31 @@
+# Terraform state and backup files
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate.*
+*.backup
+
+# Terraform crash logs
+crash.log
+
+# Terraform plan files
+*.tfplan
+
+# Local .terraform directory
+.terraform/
+
+# Sensitive variable overrides
+terraform.tfvars
+*.auto.tfvars
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# macOS-specific
+.DS_Store
+
+# Log files
+*.log
+
+# Linux-specific
+*~ 
