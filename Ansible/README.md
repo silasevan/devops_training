@@ -350,6 +350,9 @@ Make sure your public key is correctly set in the playbook.
 ![uptime](screenshots/16.png)
 
 ![](screenshots/17.png)
+![](screenshots/18.png)
+![](screenshots/19.png)
+![](screenshots/20.png)
 
 ---
 
