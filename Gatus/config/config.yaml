@@ -1,0 +1,26 @@
+web:
+  port: 5000
+
+alerting:
+  discord:
+    webhook-url: "https://discord.com/api/webhooks/1395191946678374500/X5QDbAlYZAnG80LvbPk6lzObC6jh4CPruSwJRefoSGhoR7seqtULfM8pABpr1yOFLMra"
+
+endpoints:
+  - name: Google
+    url: https://www.goooogle.com
+    interval: 1m
+    conditions:
+      - "[STATUS] == 200"
+
+  - name: GitHub
+    url: "https://github.com"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+  - name: Nonexistent
+    url: "https://thiswebsitedoesnotexist.com"
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+ 
+
